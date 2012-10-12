@@ -19,7 +19,9 @@
     <fsIndexCollection/>
     <capabilities>
       <capability>
-        <inputs/>
+        <inputs>
+          <type allAnnotatorFeatures="true">GeneInputSentence</type>
+        </inputs>
         <outputs>
           <type>GeneAnnotation</type>
           <feature>GeneAnnotation:sentence_id</feature>

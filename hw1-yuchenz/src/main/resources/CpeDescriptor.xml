@@ -3,19 +3,36 @@
     <collectionReader>
         <collectionIterator>
             <descriptor>
-                <import location="CpeDescriptor.xml"/>
+                <import location="../java/descriptors/HuskieGeneFileSystemReader.xml"/>
             </descriptor>
             <configurationParameterSettings>
                 <nameValuePair>
-                    <name>InputDirectory</name>
+                    <name>InputFile</name>
                     <value>
-                        <string>src/main/resources/data</string>
+                        <string>src/main/data/sample.in</string>
                     </value>
                 </nameValuePair>
             </configurationParameterSettings>
         </collectionIterator>
     </collectionReader>
-    <casProcessors casPoolSize="3" processingUnitThreadCount="1"/>
+    
+    <casProcessors casPoolSize="3" processingUnitThreadCount="1">
+    	<casProcessor deployment="integrated" name="Gene Input Sentence Annotator">
+			<descriptor>
+                <import location ="../java/descriptors/GeneInputSentenceAnnotator.xml"/>
+            </descriptor>
+    	</caseProcessor>
+    	
+    	<casProcessor deployment="integrated" name="Huskie Gene Annotator">
+			<descriptor>
+                <import location ="../java/descriptors/HuskieGeneAnnotator.xml"/>
+            </descriptor>
+    	</caseProcessor>
+    	
+    </casProcessors>
+    
+    
+    
     <cpeConfig>
         <numToProcess>-1</numToProcess>
         <deployAs>immediate</deployAs>
