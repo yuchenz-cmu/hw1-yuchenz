@@ -14,7 +14,7 @@
     <vendor>The Apache Software Foundation</vendor>
     <configurationParameters>
       <configurationParameter>
-        <name>InputFile</name>
+        <name>inputFile</name>
         <description>Path to the input file</description>
         <type>String</type>
         <multiValued>false</multiValued>
@@ -23,7 +23,7 @@
     </configurationParameters>
     <configurationParameterSettings>
       <nameValuePair>
-        <name>InputFile</name>
+        <name>inputFile</name>
         <value>
           <string>src/main/data/sample.in</string>
         </value>

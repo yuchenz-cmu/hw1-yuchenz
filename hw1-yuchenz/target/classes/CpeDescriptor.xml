@@ -1,42 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cpeDescription xmlns="http://uima.apache.org/resourceSpecifier">
-    <collectionReader>
-        <collectionIterator>
-            <descriptor>
-                <import location="../java/descriptors/HuskieGeneFileSystemReader.xml"/>
-            </descriptor>
-            <configurationParameterSettings>
-                <nameValuePair>
-                    <name>InputFile</name>
-                    <value>
-                        <string>src/main/data/sample.in</string>
-                    </value>
-                </nameValuePair>
-            </configurationParameterSettings>
-        </collectionIterator>
-    </collectionReader>
-    
-    <casProcessors casPoolSize="3" processingUnitThreadCount="1">
-    	<casProcessor deployment="integrated" name="Gene Input Sentence Annotator">
+	<collectionReader>
+		<collectionIterator>
 			<descriptor>
-                <import location ="../java/descriptors/GeneInputSentenceAnnotator.xml"/>
-            </descriptor>
-    	</caseProcessor>
-    	
-    	<casProcessor deployment="integrated" name="Huskie Gene Annotator">
+				<import location ="../java/descriptors/HuskieGeneFileSystemReader.xml"/>
+			</descriptor>
+			<configurationParameterSettings>
+				<nameValuePair>
+					<name>inputFile</name>
+					<value>
+						<string>hw1.in</string>
+					</value>
+				</nameValuePair>
+			</configurationParameterSettings>
+		</collectionIterator>
+	</collectionReader>
+
+	<casProcessors casPoolSize="3" processingUnitThreadCount="1">
+		<casProcessor deployment="integrated" name="Gene Input Sentence Annotator">
 			<descriptor>
-                <import location ="../java/descriptors/HuskieGeneAnnotator.xml"/>
-            </descriptor>
-    	</caseProcessor>
-    	
-    </casProcessors>
-    
-    
-    
-    <cpeConfig>
-        <numToProcess>-1</numToProcess>
-        <deployAs>immediate</deployAs>
-        <checkpoint batch="0" time="300000ms"/>
-        <timerImpl/>
-    </cpeConfig>
+				<import location ="../java/descriptors/GeneInputSentenceAnnotator.xml"/>
+			</descriptor>
+			<filter></filter>
+            <errorHandling>
+                <errorRateThreshold action="terminate" value="100/1000"/>
+                <maxConsecutiveRestarts action="terminate" value="30"/>
+                <timeout max="100000"/>
+            </errorHandling>
+            <checkpoint batch="10000"/>
+		</casProcessor>
+
+		<casProcessor deployment="integrated" name="Huskie Gene Annotator">
+			<descriptor>
+				<import location ="../java/descriptors/HuskieGeneAnnotator.xml"/>
+			</descriptor>
+			<filter></filter>
+            <errorHandling>
+                <errorRateThreshold action="terminate" value="100/1000"/>
+                <maxConsecutiveRestarts action="terminate" value="30"/>
+                <timeout max="100000"/>
+            </errorHandling>
+            <checkpoint batch="10000"/>
+		</casProcessor>
+
+		<casProcessor deployment="integrated" name="Gene File System Cas Consumer">
+			<descriptor>
+				<import location ="../java/descriptors/HuskieGeneFileSystemCasConsumer.xml"/>
+			</descriptor>
+			<filter></filter>
+            <errorHandling>
+                <errorRateThreshold action="terminate" value="100/1000"/>
+                <maxConsecutiveRestarts action="terminate" value="30"/>
+                <timeout max="100000"/>
+            </errorHandling>
+            <checkpoint batch="10000"/>
+		</casProcessor>
+	</casProcessors>
+
+	<cpeConfig>
+		<numToProcess>10</numToProcess>
+		<deployAs>immediate</deployAs>
+	</cpeConfig>
 </cpeDescription>

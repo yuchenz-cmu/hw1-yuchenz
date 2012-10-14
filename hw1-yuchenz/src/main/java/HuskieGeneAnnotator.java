@@ -10,6 +10,7 @@ public class HuskieGeneAnnotator extends JCasAnnotator_ImplBase {
 
   @Override
   public void process(JCas aJCas) throws AnalysisEngineProcessException {
+    System.err.println("HuskieGeneAnnotator ... ");
     FSIndex sentIndex = aJCas.getAnnotationIndex(GeneInputSentence.type);
     
     Iterator sentIndexIterator = sentIndex.iterator();

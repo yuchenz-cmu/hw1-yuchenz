@@ -68,7 +68,7 @@ public class SimpleRunCPE extends Thread {
     }
 
     // parse CPE descriptor
-    System.out.println("Parsing CPE Descriptor");
+    System.out.printf("Parsing CPE Descriptor %s ... \n", args[0]);
     CpeDescription cpeDesc = UIMAFramework.getXMLParser().parseCpeDescription(
             new XMLInputSource(args[0]));
     // instantiate CPE

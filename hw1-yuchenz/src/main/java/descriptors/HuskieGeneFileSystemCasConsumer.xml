@@ -2,14 +2,28 @@
 <analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
   <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
   <primitive>true</primitive>
-  <annotatorImplementationName>GeneInputSentenceAnnotator</annotatorImplementationName>
+  <annotatorImplementationName>HuskieGeneFileSystemCasConsumer</annotatorImplementationName>
   <analysisEngineMetaData>
-    <name>GeneInputSentenceAnnotator</name>
-    <description>Splits the input document text into sentences, which has an id and a text.</description>
+    <name>HuskieGeneFileSystemCasConsumer</name>
+    <description/>
     <version>1.0</version>
-    <vendor>Yuchen Zhang</vendor>
-    <configurationParameters/>
-    <configurationParameterSettings/>
+    <vendor/>
+    <configurationParameters>
+      <configurationParameter>
+        <name>outputFile</name>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>outputFile</name>
+        <value>
+          <string>hw1-yuchenz.out</string>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
     <typeSystemDescription>
       <imports>
         <import name="descriptors.HuskieGeneAnnotatorTypeSystem"/>
@@ -20,11 +34,9 @@
     <capabilities>
       <capability>
         <inputs>
-          <type allAnnotatorFeatures="true">uima.tcas.DocumentAnnotation</type>
+          <type allAnnotatorFeatures="true">GeneAnnotation</type>
         </inputs>
-        <outputs>
-          <type allAnnotatorFeatures="true">GeneInputSentence</type>
-        </outputs>
+        <outputs/>
         <languagesSupported/>
       </capability>
     </capabilities>

@@ -1,27 +1,32 @@
-import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileInputStream;
+import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
 import org.apache.uima.collection.CollectionException;
 import org.apache.uima.collection.CollectionReader_ImplBase;
-import org.apache.uima.examples.SourceDocumentInformation;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.tcas.DocumentAnnotation;
+import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.FileUtils;
+import org.apache.uima.util.Level;
 import org.apache.uima.util.Progress;
 
 public class HuskieGeneFileSystemReader extends CollectionReader_ImplBase {
 
   protected boolean processed;
 
-  public static final String PARAM_INPUT_FILE = "InputFile";
+  public static final String PARAM_INPUT_FILE = "inputFile";
 
+  public void initialize() throws ResourceInitializationException {
+    super.initialize();
+    processed = false;
+  }
+  
   @Override
   public void getNext(CAS aCAS) throws IOException, CollectionException {
+    System.err.println("HuskieGeneFileSystemReader ... ");
+
     String inputFilename = ((String) getConfigParameterValue(PARAM_INPUT_FILE)).trim();
 
     File inputFile = new File(inputFilename);
@@ -41,8 +46,8 @@ public class HuskieGeneFileSystemReader extends CollectionReader_ImplBase {
 
   @Override
   public boolean hasNext() throws IOException, CollectionException {
-    if (processed) {
-      processed = false;
+    if (!processed) {
+      processed = true;
       return true;
     } else {
       return false;
