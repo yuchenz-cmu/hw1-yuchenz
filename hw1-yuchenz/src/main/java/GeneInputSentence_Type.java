@@ -13,9 +13,9 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Sat Oct 13 19:25:18 EDT 2012
+ * Updated by JCasGen Mon Oct 15 01:25:24 EDT 2012
  * @generated */
-public class GeneInputSentence_Type extends Annotation_Type {
+public class GeneInputSentence_Type extends BaseAnnotation_Type {
   /** @generated */
   @Override
   protected FSGenerator getFSGenerator() {return fsGenerator;}

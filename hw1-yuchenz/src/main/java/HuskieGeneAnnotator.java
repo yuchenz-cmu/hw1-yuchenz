@@ -51,9 +51,6 @@ public class HuskieGeneAnnotator extends JCasAnnotator_ImplBase {
       System.err.printf("got %d annotations ... \n", regexGeneAnnotations.length);
       
       for (GeneAnnotation annot : regexGeneAnnotations) {
-        // the annotation returned are based on per sentence index, need to convert
-        annot.setBegin(annot.getBegin() + sent.getBegin());
-        annot.setEnd(annot.getEnd() + sent.getBegin());
         annot.setSentenceId(sent.getId());
         annot.addToIndexes();
       }

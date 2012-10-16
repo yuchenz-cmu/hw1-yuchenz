@@ -43,12 +43,13 @@ def is_roman_numerals(target_str):
     return (re.search("^[IVX]+$", target_str) is not None)
 
 def get_greek_alphabet_ptn():
-    greek_alphabet_ptn = ""
+    greek_alphabet_ptn = "\\b("
     for w in greek_alphabets:
-        greek_alphabet_ptn += "\\b" + w + "\\b|"
+        greek_alphabet_ptn += w + "|"
     
     if (greek_alphabet_ptn[-1] == "|"):
         greek_alphabet_ptn = greek_alphabet_ptn[:-1]
+    greek_alphabet_ptn += ")\\b"
     
     return greek_alphabet_ptn
 
@@ -69,7 +70,7 @@ def extract_regex():
             return None
         
         gene = tokens[-1]
-        connection = "[ ,./()-]"
+        connection = "[ ]"
         # gene_tokens = gene.split("[ -,\./()]")
         gene_tokens = re.split(connection, gene)
         gene_tokens_num = list()
@@ -103,7 +104,11 @@ def extract_regex():
                 
             # gene_regex += connection
         if (gene_regex not in regex_list):
-            regex_list.append("\\b" + gene_regex + "\\b")
+            if (not gene_regex.startswith("\\b")):
+                gene_regex = "\\b" + gene_regex
+            if (not gene_regex.endswith("\\b")):
+                gene_regex = gene_regex + "\\b"
+            regex_list.append(gene_regex)
    
     regex_list = list(set(regex_list))
     return regex_list
@@ -121,3 +126,4 @@ def main():
 
 if __name__ == "__main__":
     sys.exit(main())
+    

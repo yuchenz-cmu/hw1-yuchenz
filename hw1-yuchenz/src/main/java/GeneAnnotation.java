@@ -12,10 +12,10 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Sat Oct 13 19:25:18 EDT 2012
- * XML source: /home/yuchenz/Documents/academics/2012fall/11-791 Software Engineering/workspace/hw1-yuchenz/hw1-yuchenz/src/main/java/descriptors/HuskieGeneFileSystemCasConsumer.xml
+ * Updated by JCasGen Mon Oct 15 01:25:24 EDT 2012
+ * XML source: /home/yuchenz/Documents/academics/2012fall/11-791 Software Engineering/workspace/hw1-yuchenz/hw1-yuchenz/src/main/java/descriptors/HuskieGeneAnnotatorTypeSystem.xml
  * @generated */
-public class GeneAnnotation extends Annotation {
+public class GeneAnnotation extends BaseAnnotation {
   /** @generated
    * @ordered 
    */

@@ -22,6 +22,7 @@ public class GeneInputSentenceAnnotator extends JCasAnnotator_ImplBase {
       GeneInputSentence sentAnnot = new GeneInputSentence(aJCas, currStart, currStart + sent.length());
       sentAnnot.setId(sent.substring(0, idx));
       sentAnnot.setText(sent.substring(idx + 1, sent.length()));
+      sentAnnot.setSource("GeneInputSentenceAnnotator");
       sentAnnot.addToIndexes();
       currStart += sent.length() + 1;
     }

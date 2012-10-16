@@ -6,6 +6,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.uima.jcas.JCas;
+import org.python.util.jython;
 
 public class RegexModel extends BaseModel {
   protected ArrayList<Pattern> regexList = null;
@@ -16,7 +17,7 @@ public class RegexModel extends BaseModel {
   }
   
   private RegexModel() {
-    
+
   }
 
   public void loadModelFromFile(String regexModelPath) throws IOException {
@@ -47,7 +48,7 @@ public class RegexModel extends BaseModel {
         GeneAnnotation geneAnnot = new GeneAnnotation(aJCas, begin, end);
         geneAnnot.setGene(gene);
 
-        System.err.printf("\n\t%s located %s from %d to %d ... ", regex.pattern(), gene, begin, end);
+        // System.err.printf("\n\t%s located %s from %d to %d ... ", regex.pattern(), gene, begin, end);
         
         annotationList.add(geneAnnot);
       }

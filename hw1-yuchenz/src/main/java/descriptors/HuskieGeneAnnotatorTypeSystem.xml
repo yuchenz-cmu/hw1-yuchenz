@@ -8,7 +8,7 @@
     <typeDescription>
       <name>GeneInputSentence</name>
       <description/>
-      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <supertypeName>BaseAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>id</name>
@@ -25,7 +25,7 @@
     <typeDescription>
       <name>GeneAnnotation</name>
       <description/>
-      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <supertypeName>BaseAnnotation</supertypeName>
       <features>
         <featureDescription>
           <name>sentenceId</name>
@@ -35,6 +35,18 @@
         <featureDescription>
           <name>gene</name>
           <description/>
+          <rangeTypeName>uima.cas.String</rangeTypeName>
+        </featureDescription>
+      </features>
+    </typeDescription>
+    <typeDescription>
+      <name>BaseAnnotation</name>
+      <description>Base of all annotation subclasses</description>
+      <supertypeName>uima.tcas.Annotation</supertypeName>
+      <features>
+        <featureDescription>
+          <name>source</name>
+          <description>Describes where this annotation come from. </description>
           <rangeTypeName>uima.cas.String</rangeTypeName>
         </featureDescription>
       </features>
