@@ -1,6 +1,4 @@
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.cas.CASException;
@@ -9,15 +7,22 @@ import org.apache.uima.collection.CollectionReader_ImplBase;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.util.FileUtils;
-import org.apache.uima.util.Level;
 import org.apache.uima.util.Progress;
 
+/**
+ * CollectionReader that's responsible for reading the file to be annotated. 
+ * @author yuchenz
+ *
+ */
 public class HuskieGeneFileSystemReader extends CollectionReader_ImplBase {
 
   protected boolean processed;
 
   public static final String PARAM_INPUT_FILE = "inputFile";
 
+  /**
+   * Initialize routine
+   */
   public void initialize() throws ResourceInitializationException {
     super.initialize();
     processed = false;

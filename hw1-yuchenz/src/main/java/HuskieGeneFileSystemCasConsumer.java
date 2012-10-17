@@ -10,6 +10,12 @@ import org.apache.uima.collection.CasConsumer_ImplBase;
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceProcessException;
 
+/**
+ * CasConsumer that's responsible for writting the resulted gene annotations
+ * to a file on disk. 
+ * @author yuchenz
+ *
+ */
 public class HuskieGeneFileSystemCasConsumer extends CasConsumer_ImplBase {
 
   public static final String PARAM_OUTPUT_FILE = "outputFile";

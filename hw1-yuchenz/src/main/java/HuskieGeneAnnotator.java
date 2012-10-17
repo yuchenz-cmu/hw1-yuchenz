@@ -1,6 +1,3 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.Iterator;
 
@@ -8,20 +5,33 @@ import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIndex;
 import org.apache.uima.jcas.JCas;
-import org.apache.uima.jcas.tcas.Annotation;
 
+/**
+ * Main Gene name annotator, uses regular expression model. 
+ * 
+ * @author yuchenz
+ *
+ */
 public class HuskieGeneAnnotator extends JCasAnnotator_ImplBase {
 
   public static final String PARAM_REGEX_MODEL_PATH = "regexModelPath";
 
   protected RegexModel regexModel = null;
 
+  /**
+   * Loads the model from file given by configuration parameter "regexModelPath"
+   * @throws IOException can't find or can't open the model file. 
+   */
   protected void loadModels() throws IOException {
     String regexModelPath = ((String) getContext().getConfigParameterValue(PARAM_REGEX_MODEL_PATH))
             .trim();
     regexModel = new RegexModel(regexModelPath);
   }
 
+
+  /**
+   * Annotate all the sentences, add to index. 
+   */
   @Override
   public void process(JCas aJCas) throws AnalysisEngineProcessException {
     System.err.println("HuskieGeneAnnotator ... ");
@@ -42,11 +52,6 @@ public class HuskieGeneAnnotator extends JCasAnnotator_ImplBase {
       GeneInputSentence sent = (GeneInputSentence) sentIndexIterator.next();
       System.err.printf("Annotating %s ... ", sent.getId());
       
-      // GeneAnnotation geneAnnot = new GeneAnnotation(aJCas, sent.getBegin(), sent.getBegin() + 1);
-      // geneAnnot.setGene("Dummy");
-      // geneAnnot.setSentenceId(sent.getId());
-      // geneAnnot.addToIndexes();
-
       GeneAnnotation[] regexGeneAnnotations = regexModel.annotateLine(sent.getText(), aJCas);
       System.err.printf("got %d annotations ... \n", regexGeneAnnotations.length);
       

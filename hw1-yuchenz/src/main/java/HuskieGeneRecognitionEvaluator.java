@@ -7,6 +7,14 @@ import org.apache.uima.cas.CAS;
 import org.apache.uima.collection.CasConsumer_ImplBase;
 import org.apache.uima.resource.ResourceProcessException;
 
+/**
+ * CasConsumer in charge of evaluating the performance of an annotation result
+ * against a reference file. Prints out the precision, recall and F1 score
+ * to standard output. 
+ * 
+ * @author yuchenz
+ *
+ */
 public class HuskieGeneRecognitionEvaluator extends CasConsumer_ImplBase {
 
   public static final String PARAM_REFERENCE_PATH = "referencePath";
@@ -24,10 +32,7 @@ public class HuskieGeneRecognitionEvaluator extends CasConsumer_ImplBase {
       System.err.printf("Using reference file %s ... \n", referenceFilename);
       System.err.printf("Using result file %s ... \n", resultFilename);
 
-      // String referenceFilename = "src/main/resources/data/sample.out";
-      // String resultFilename = "hw1-yuchenz.out";
       BufferedReader fileReader = null;
-
       try {
         fileReader = new BufferedReader(new FileReader(referenceFilename));
       } catch (FileNotFoundException e) {
@@ -60,6 +65,8 @@ public class HuskieGeneRecognitionEvaluator extends CasConsumer_ImplBase {
       int retrievedCount = 0;
       int retrievedRelaventCount = 0;
 
+      // go through every line in the result file, see if it appear in the 
+      // reference file (exact match)
       BufferedReader resultReader = null;
       try {
         resultReader = new BufferedReader(new FileReader(resultFilename));
@@ -89,6 +96,7 @@ public class HuskieGeneRecognitionEvaluator extends CasConsumer_ImplBase {
       } catch (IOException e) {
       }
 
+      // prints out the stats. 
       double precision = ((double) retrievedRelaventCount) / ((double) retrievedCount);
       double recall = ((double) retrievedRelaventCount) / ((double) relevantCount);
       double fscore = 2 * precision * recall / (precision + recall);
@@ -100,6 +108,11 @@ public class HuskieGeneRecognitionEvaluator extends CasConsumer_ImplBase {
     }
   }
 
+  /**
+   * Unit testing 
+   * @param args
+   * @throws ResourceProcessException
+   */
   public static void main(String args[]) throws ResourceProcessException {
     HuskieGeneRecognitionEvaluator eval = new HuskieGeneRecognitionEvaluator();
     ((HuskieGeneRecognitionEvaluator) eval).processCas((CAS) null);
