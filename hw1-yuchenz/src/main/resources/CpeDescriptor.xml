@@ -68,7 +68,7 @@
 			<configurationParameterSettings>
 				<nameValuePair>
 					<name>referencePath</name>
-					<value><string>src/main/resources/data/sample.out.test</string></value>
+					<value><string>src/main/resources/data/sample.out</string></value>
 				</nameValuePair>
 				<nameValuePair>
 					<name>resultPath</name>
