@@ -2376,6 +2376,7 @@
 \bMEF[0-9]+[A-Z]\b
 \bendogenous[ ]Hnf[0-9]+g[ ]gene[ ]locus\b
 \bLyF\-[0-9]+[ ]binding[ ]sites\b
+\b(alpha|beta|gamma|delta|epsilon|zeta|eta|theta|iota|kappa|lambda|mu|nu|xi|omicron|pi|rho|sigma|tau|upsilon|phi|chi|psi|omega)\b
 \bFur\-binding[ ]site\b
 \bchloramphenicol[ ]acetyltransferase[ ]construct\b
 \bPhLOP[0-9]+\b

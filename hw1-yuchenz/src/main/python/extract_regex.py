@@ -108,7 +108,7 @@ def extract_regex():
                 gene_regex = "\\b" + gene_regex
             if (not gene_regex.endswith("\\b")):
                 gene_regex = gene_regex + "\\b"
-            if (gene_regex != "\\b[A-Z]\\b" and gene_regex != get_greek_alphabet_ptn()):
+            if (gene_regex != "\\b[A-Z]\\b" and gene_regex != "\\b" + get_greek_alphabet_ptn() +"\\b"):
                 regex_list.append(gene_regex)
    
     regex_list = list(set(regex_list))
