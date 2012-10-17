@@ -1,3 +1,4 @@
 #!/bin/bash
 
-cat ../resources/data/sample.out.train | ./extract_regex.py > ../resources/data/regex_1.model
+# cat ../resources/data/sample.out.train | ./extract_regex.py > ../resources/data/regex_1.model
+cat ../resources/data/sample.out | ./extract_regex.py > ../resources/data/regex_1.model

@@ -3,7 +3,7 @@
 	<collectionReader>
 		<collectionIterator>
 			<descriptor>
-				<import location ="../java/descriptors/HuskieGeneFileSystemReader.xml"/>
+				<import location ="descriptors/HuskieGeneFileSystemReader.xml"/>
 			</descriptor>
 			<configurationParameterSettings>
 				<nameValuePair>
@@ -17,7 +17,7 @@
 	<casProcessors casPoolSize="4" processingUnitThreadCount="1">
 		<casProcessor deployment="integrated" name="Gene Input Sentence Annotator">
 			<descriptor>
-				<import location ="../java/descriptors/GeneInputSentenceAnnotator.xml"/>
+				<import location ="descriptors/GeneInputSentenceAnnotator.xml"/>
 			</descriptor>
 			<filter></filter>
             <errorHandling>
@@ -30,7 +30,7 @@
 
 		<casProcessor deployment="integrated" name="Huskie Gene Annotator">
 			<descriptor>
-				<import location ="../java/descriptors/HuskieGeneAnnotator.xml"/>
+				<import location ="descriptors/HuskieGeneAnnotator.xml"/>
 			</descriptor>
 			<filter></filter>
             <errorHandling>
@@ -43,7 +43,7 @@
 
 		<casProcessor deployment="integrated" name="Gene File System Cas Consumer">
 			<descriptor>
-				<import location ="../java/descriptors/HuskieGeneFileSystemCasConsumer.xml"/>
+				<import location ="descriptors/HuskieGeneFileSystemCasConsumer.xml"/>
 			</descriptor>
 			<configurationParameterSettings>
 				<nameValuePair>
@@ -63,7 +63,7 @@
 		
 		<casProcessor deployment="integrated" name="Evaluator">
 			<descriptor>
-				<import location ="../java/descriptors/HuskieGeneRecognitionEvaluator.xml"/>
+				<import location ="descriptors/HuskieGeneRecognitionEvaluator.xml"/>
 			</descriptor>
 			<configurationParameterSettings>
 				<nameValuePair>
