@@ -10,8 +10,8 @@ import org.apache.uima.jcas.tcas.Annotation;
 
 
 /** 
- * Updated by JCasGen Mon Oct 15 01:25:24 EDT 2012
- * XML source: /home/yuchenz/Documents/academics/2012fall/11-791 Software Engineering/workspace/hw1-yuchenz/hw1-yuchenz/src/main/java/descriptors/HuskieGeneAnnotatorTypeSystem.xml
+ * Updated by JCasGen Tue Oct 16 21:37:49 EDT 2012
+ * XML source: /home/yuchenz/Documents/academics/2012fall/11-791 Software Engineering/workspace/hw1-yuchenz/hw1-yuchenz/src/main/java/descriptors/HuskieGeneRecognitionEvaluator.xml
  * @generated */
 public class GeneInputSentence extends BaseAnnotation {
   /** @generated

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>true</primitive>
+  <annotatorImplementationName>HuskieGeneRecognitionEvaluator</annotatorImplementationName>
+  <analysisEngineMetaData>
+    <name>HuskieGeneRecognitionEvaluator</name>
+    <description>Evaluate the result against ground truth</description>
+    <version>1.0</version>
+    <vendor>Yuchen Zhang</vendor>
+    <configurationParameters>
+      <configurationParameter>
+        <name>referencePath</name>
+        <description>Path to the reference file</description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+      <configurationParameter>
+        <name>resultPath</name>
+        <description>Path to the result file. </description>
+        <type>String</type>
+        <multiValued>false</multiValued>
+        <mandatory>true</mandatory>
+      </configurationParameter>
+    </configurationParameters>
+    <configurationParameterSettings>
+      <nameValuePair>
+        <name>referencePath</name>
+        <value>
+          <string>src/main/resources/data/sample.out</string>
+        </value>
+      </nameValuePair>
+      <nameValuePair>
+        <name>resultPath</name>
+        <value>
+          <string>hw1-yuchenz.out</string>
+        </value>
+      </nameValuePair>
+    </configurationParameterSettings>
+    <typeSystemDescription>
+      <imports>
+        <import name="descriptors.HuskieGeneAnnotatorTypeSystem"/>
+      </imports>
+    </typeSystemDescription>
+    <typePriorities/>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs>
+          <type allAnnotatorFeatures="true">GeneAnnotation</type>
+        </inputs>
+        <outputs/>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+    <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>

@@ -8,15 +8,13 @@
 			<configurationParameterSettings>
 				<nameValuePair>
 					<name>inputFile</name>
-					<value>
-						<string>hw1.in</string>
-					</value>
+					<value><string>hw1.in</string></value>
 				</nameValuePair>
 			</configurationParameterSettings>
 		</collectionIterator>
 	</collectionReader>
 
-	<casProcessors casPoolSize="3" processingUnitThreadCount="1">
+	<casProcessors casPoolSize="4" processingUnitThreadCount="1">
 		<casProcessor deployment="integrated" name="Gene Input Sentence Annotator">
 			<descriptor>
 				<import location ="../java/descriptors/GeneInputSentenceAnnotator.xml"/>
@@ -47,6 +45,37 @@
 			<descriptor>
 				<import location ="../java/descriptors/HuskieGeneFileSystemCasConsumer.xml"/>
 			</descriptor>
+			<configurationParameterSettings>
+				<nameValuePair>
+					<name>outputFile</name>
+					<value><string>hw1-yuchenz.out</string></value>
+				</nameValuePair>
+			</configurationParameterSettings>			
+
+			<filter></filter>
+            <errorHandling>
+                <errorRateThreshold action="terminate" value="100/1000"/>
+                <maxConsecutiveRestarts action="terminate" value="30"/>
+                <timeout max="100000"/>
+            </errorHandling>
+            <checkpoint batch="10000"/>
+		</casProcessor>
+		
+		<casProcessor deployment="integrated" name="Evaluator">
+			<descriptor>
+				<import location ="../java/descriptors/HuskieGeneRecognitionEvaluator.xml"/>
+			</descriptor>
+			<configurationParameterSettings>
+				<nameValuePair>
+					<name>referencePath</name>
+					<value><string>src/main/resources/data/sample.out.test</string></value>
+				</nameValuePair>
+				<nameValuePair>
+					<name>resultPath</name>
+					<value><string>hw1-yuchenz.out</string></value>
+				</nameValuePair>
+				
+			</configurationParameterSettings>
 			<filter></filter>
             <errorHandling>
                 <errorRateThreshold action="terminate" value="100/1000"/>

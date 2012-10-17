@@ -13,7 +13,7 @@ import org.apache.uima.cas.Feature;
 import org.apache.uima.jcas.tcas.Annotation_Type;
 
 /** 
- * Updated by JCasGen Mon Oct 15 01:25:24 EDT 2012
+ * Updated by JCasGen Tue Oct 16 21:37:49 EDT 2012
  * @generated */
 public class GeneInputSentence_Type extends BaseAnnotation_Type {
   /** @generated */

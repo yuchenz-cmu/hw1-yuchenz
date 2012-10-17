@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import org.apache.uima.jcas.JCas;
-import org.python.util.jython;
 
 public class RegexModel extends BaseModel {
   protected ArrayList<Pattern> regexList = null;
@@ -43,8 +41,26 @@ public class RegexModel extends BaseModel {
 
       while (matcher.find()) {
         int begin = matcher.start();
-        int end = matcher.end();
-        String gene = line.substring(begin, end);
+        int end = matcher.end() - 1;
+        String gene = line.substring(begin, end + 1);
+        
+        // subtract number of white spaces from begin and end
+        int spaceNumBegin = 0;
+        for (int idx = 0; idx <= begin; idx++) {
+          if (Character.isWhitespace(line.charAt(idx))) {
+            spaceNumBegin++;
+          }
+        }
+        
+        int spaceNumEnd = 0;
+        for (int idx = 0; idx <= end; idx++) {
+          if (Character.isWhitespace(line.charAt(idx))) {
+            spaceNumEnd++;
+          }
+        }
+        begin -= spaceNumBegin;
+        end -= spaceNumEnd;
+        
         GeneAnnotation geneAnnot = new GeneAnnotation(aJCas, begin, end);
         geneAnnot.setGene(gene);
 
