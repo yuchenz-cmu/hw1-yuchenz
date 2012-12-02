@@ -25,7 +25,7 @@
       <nameValuePair>
         <name>inputFile</name>
         <value>
-          <string>src/main/data/sample.in</string>
+          <string>src/main/resources/data/sample.in</string>
         </value>
       </nameValuePair>
     </configurationParameterSettings>

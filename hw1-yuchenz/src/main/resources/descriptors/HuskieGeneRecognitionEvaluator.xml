@@ -28,7 +28,7 @@
       <nameValuePair>
         <name>referencePath</name>
         <value>
-          <string>src/main/resources/data/sample.out</string>
+          <string>data/sample.out</string>
         </value>
       </nameValuePair>
       <nameValuePair>

@@ -2,6 +2,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.HashMap;
 import org.apache.uima.cas.CAS;
 import org.apache.uima.collection.CasConsumer_ImplBase;
@@ -33,12 +35,9 @@ public class HuskieGeneRecognitionEvaluator extends CasConsumer_ImplBase {
       System.err.printf("Using result file %s ... \n", resultFilename);
 
       BufferedReader fileReader = null;
-      try {
-        fileReader = new BufferedReader(new FileReader(referenceFilename));
-      } catch (FileNotFoundException e) {
-        System.err.printf("Unable to open reference file %s ... \n", referenceFilename);
-        return;
-      }
+      InputStream referenceInputStream = this.getClass().getResourceAsStream(referenceFilename);
+      // fileReader = new BufferedReader(new FileReader(referenceFilename));
+      fileReader = new BufferedReader(new InputStreamReader(referenceInputStream));
 
       String line = "";
       HashMap<String, Integer> referenceList = new HashMap<String, Integer>();

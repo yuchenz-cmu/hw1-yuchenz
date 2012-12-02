@@ -20,7 +20,7 @@
       <nameValuePair>
         <name>regexModelPath</name>
         <value>
-          <string>src/main/resources/data/regex_1.model</string>
+          <string>data/regex_1.model</string>
         </value>
       </nameValuePair>
     </configurationParameterSettings>

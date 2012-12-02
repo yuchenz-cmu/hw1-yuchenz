@@ -1,6 +1,8 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -36,7 +38,9 @@ public class RegexModel extends BaseModel {
    * Loads the model from file. 
    */
   public void loadModelFromFile(String regexModelPath) throws IOException {
-    BufferedReader fileReader = new BufferedReader(new FileReader(regexModelPath));
+    // BufferedReader fileReader = new BufferedReader(new FileReader(regexModelPath));
+    InputStream modelInputStream = this.getClass().getResourceAsStream(regexModelPath);
+    BufferedReader fileReader = new BufferedReader(new InputStreamReader(modelInputStream));
     String line = null;
 
     while ((line = fileReader.readLine()) != null) {
